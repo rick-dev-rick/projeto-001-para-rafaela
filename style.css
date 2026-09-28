@@ -1,0 +1,45 @@
+body {
+    background: linear-gradient(135deg, #0a0a0a, #2b102b);
+    text-align: center;
+    font-family: Arial, sans-serif;
+    padding-top: 100px;
+}
+
+h1 {
+    color: #8e44ad;
+    font-size: 50px;
+}
+
+p {
+    color: #ffffff;
+    font-size: 20px;
+}
+
+button {
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(233, 30, 99, 0.5);
+}
+
+#mensagem {
+    margin-top: 30px;
+    color: #e91e63;
+    font-size: 24px;
+    font-weight: bold;
+    transition: opacity 0.5s;
+}
