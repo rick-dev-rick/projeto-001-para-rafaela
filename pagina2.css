@@ -1,300 +1,4 @@
 /* ================================= */
-/* PÁGINA 2 - JARDIM ❤️ */
-/* ================================= */
-
-
-/* RESET */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-/* PÁGINA */
-
-body {
-
-    min-height: 100vh;
-
-    font-family: Arial, sans-serif;
-
-    background:
-        radial-gradient(
-            circle at 50% 70%,
-            #25000b 0%,
-            #090006 45%,
-            #000000 100%
-        );
-
-    color: white;
-
-    overflow-x: hidden;
-}
-
-
-/* CONTEÚDO */
-
-.pagina {
-
-    min-height: 100vh;
-
-    text-align: center;
-
-    padding-top: 35px;
-
-}
-
-
-/* ================================= */
-/* CABEÇALHO */
-/* ================================= */
-
-.cabecalho {
-
-    padding: 0 20px;
-
-    position: relative;
-
-    z-index: 10;
-
-}
-
-
-.cabecalho h1 {
-
-    color: #ffb6c1;
-
-    font-size: 32px;
-
-    margin-bottom: 12px;
-
-    text-shadow:
-        0 0 8px rgba(255, 105, 135, 0.8),
-        0 0 20px rgba(255, 105, 135, 0.5);
-
-}
-
-
-.cabecalho p {
-
-    color: #e9cbd2;
-
-    font-size: 16px;
-
-    line-height: 1.6;
-
-}
-
-
-/* ================================= */
-/* JARDIM */
-/* ================================= */
-
-.jardim {
-
-    position: relative;
-
-    width: 100%;
-
-    max-width: 700px;
-
-    height: 430px;
-
-    margin: 20px auto 0;
-
-    overflow: hidden;
-
-}
-
-
-/* ================================= */
-/* FLOR */
-/* ================================= */
-
-.flower {
-
-    position: absolute;
-
-    bottom: 0;
-
-    width: 100px;
-
-    height: 350px;
-
-}
-
-
-/* POSIÇÕES */
-
-.flower-1 {
-
-    left: 8%;
-
-    transform: scale(0.8);
-
-}
-
-.flower-2 {
-
-    left: 30%;
-
-    transform: scale(1.05);
-
-}
-
-.flower-3 {
-
-    left: 52%;
-
-    transform: scale(0.9);
-
-}
-
-.flower-4 {
-
-    left: 73%;
-
-    transform: scale(0.72);
-
-}
-
-
-/* ================================= */
-/* CAULE */
-/* ================================= */
-
-.flower-stem {
-
-    position: absolute;
-
-    bottom: 0;
-
-    left: 50%;
-
-    width: 6px;
-
-    height: 250px;
-
-    transform:
-        translateX(-50%)
-        scaleY(0);
-
-    transform-origin: bottom;
-
-    background:
-        linear-gradient(
-            90deg,
-            #082d14,
-            #1d7a36,
-            #0a3217
-        );
-
-    border-radius: 10px;
-
-    box-shadow:
-        0 0 5px rgba(40, 180, 80, 0.5);
-
-    animation:
-        growStem 2s ease-out forwards;
-
-}
-
-
-/* ================================= */
-/* FOLHAS */
-/* ================================= */
-
-.flower-leaf {
-
-    position: absolute;
-
-    width: 55px;
-
-    height: 25px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #0b5420,
-            #27a84a
-        );
-
-    border-radius:
-        100% 0 100% 0;
-
-    opacity: 0;
-
-    box-shadow:
-        0 0 8px rgba(30, 170, 70, 0.4);
-
-}
-
-
-/* FOLHA ESQUERDA */
-
-.leaf-1 {
-
-    left: 4px;
-
-    bottom: 110px;
-
-    transform:
-        rotate(-35deg)
-        scale(0);
-
-    animation:
-        leafLeft 0.8s ease-out 1.7s forwards;
-
-}
-
-
-/* FOLHA DIREITA */
-
-.leaf-2 {
-
-    right: 2px;
-
-    bottom: 165px;
-
-    transform:
-        rotate(125deg)
-        scale(0);
-
-    animation:
-        leafRight 0.8s ease-out 2s forwards;
-
-}
-
-
-/* ================================= */
-/* FLOR / PÉTALAS */
-/* ================================= */
-
-.flower-bloom {
-
-    position: absolute;
-
-    width: 100px;
-
-    height: 100px;
-
-    left: 50%;
-
-    top: 20px;
-
-    transform:
-        translateX(-50%)
-        scale(0);
-
-    animation:
-        bloomAppear 1.2s ease-out 2.4s forwards;
-
-}
-
-
-/* ================================= */
 /* PÉTALAS DE LUZ */
 /* ================================= */
 
@@ -303,15 +7,12 @@ body {
     position: absolute;
 
     left: 50%;
-
     top: 50%;
 
     width: 38px;
-
     height: 65px;
 
     margin-left: -19px;
-
     margin-top: -32px;
 
     border-radius:
@@ -321,10 +22,13 @@ body {
 
     transform-origin: 50% 100%;
 
+    animation:
+        lightBloom 0.8s ease-out forwards,
+        glowPulse 2s ease-in-out 4s infinite alternate;
 }
 
 
-/* PETALAS ÍMPARES */
+/* CORES DAS PÉTALAS */
 
 .flower-Light:nth-child(odd) {
 
@@ -335,11 +39,8 @@ body {
         drop-shadow(
             0 0 10px #ffd85f
         );
-
 }
 
-
-/* PETALAS PARES */
 
 .flower-Light:nth-child(even) {
 
@@ -350,267 +51,57 @@ body {
         drop-shadow(
             0 0 10px #ff6236
         );
-
 }
 
 
-/* ROTAÇÕES */
+/* ================================= */
+/* ROTAÇÃO DE CADA PÉTALA */
+/* ================================= */
 
 .light-1 {
-
-    transform:
-        rotate(0deg)
-        translateY(-27px)
-        scale(0);
-
-}
-
-.light-2 {
-
-    transform:
-        rotate(45deg)
-        translateY(-27px)
-        scale(0);
-
-}
-
-.light-3 {
-
-    transform:
-        rotate(90deg)
-        translateY(-27px)
-        scale(0);
-
-}
-
-.light-4 {
-
-    transform:
-        rotate(135deg)
-        translateY(-27px)
-        scale(0);
-
-}
-
-.light-5 {
-
-    transform:
-        rotate(180deg)
-        translateY(-27px)
-        scale(0);
-
-}
-
-.light-6 {
-
-    transform:
-        rotate(225deg)
-        translateY(-27px)
-        scale(0);
-
-}
-
-.light-7 {
-
-    transform:
-        rotate(270deg)
-        translateY(-27px)
-        scale(0);
-
-}
-
-.light-8 {
-
-    transform:
-        rotate(315deg)
-        translateY(-27px)
-        scale(0);
-
-}
-
-
-/* ANIMAÇÃO DOS PÉTALAS */
-
-.flower-Light {
-
-    animation:
-        lightBloom 0.8s ease-out forwards,
-        glowPulse 2s ease-in-out 4s infinite alternate;
-
-}
-
-
-/* DELAYS */
-
-.light-1 {
+    --angle: 0deg;
     animation-delay: 2.9s, 4s;
 }
 
 .light-2 {
+    --angle: 45deg;
     animation-delay: 3s, 4.1s;
 }
 
 .light-3 {
+    --angle: 90deg;
     animation-delay: 3.1s, 4.2s;
 }
 
 .light-4 {
+    --angle: 135deg;
     animation-delay: 3.2s, 4.3s;
 }
 
 .light-5 {
+    --angle: 180deg;
     animation-delay: 3.3s, 4.4s;
 }
 
 .light-6 {
+    --angle: 225deg;
     animation-delay: 3.4s, 4.5s;
 }
 
 .light-7 {
+    --angle: 270deg;
     animation-delay: 3.5s, 4.6s;
 }
 
 .light-8 {
+    --angle: 315deg;
     animation-delay: 3.6s, 4.7s;
 }
 
 
 /* ================================= */
-/* CENTRO DA FLOR */
+/* NASCIMENTO DAS PÉTALAS */
 /* ================================= */
-
-.flower-center {
-
-    position: absolute;
-
-    width: 28px;
-
-    height: 28px;
-
-    left: 50%;
-
-    top: 50%;
-
-    transform:
-        translate(-50%, -50%)
-        scale(0);
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            #fff59d 0%,
-            #ffc400 40%,
-            #ff8c00 100%
-        );
-
-    box-shadow:
-        0 0 10px #ffd000,
-        0 0 25px #ff9d00;
-
-    animation:
-        centerBloom 0.8s ease-out 3.7s forwards,
-        centerGlow 2s ease-in-out 4.5s infinite alternate;
-
-}
-
-
-/* ================================= */
-/* ANIMAÇÕES */
-/* ================================= */
-
-@keyframes growStem {
-
-    from {
-
-        transform:
-            translateX(-50%)
-            scaleY(0);
-
-    }
-
-    to {
-
-        transform:
-            translateX(-50%)
-            scaleY(1);
-
-    }
-
-}
-
-
-@keyframes leafLeft {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            rotate(-35deg)
-            scale(0);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            rotate(-35deg)
-            scale(1);
-
-    }
-
-}
-
-
-@keyframes leafRight {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            rotate(125deg)
-            scale(0);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            rotate(125deg)
-            scale(1);
-
-    }
-
-}
-
-
-@keyframes bloomAppear {
-
-    from {
-
-        transform:
-            translateX(-50%)
-            scale(0);
-
-    }
-
-    to {
-
-        transform:
-            translateX(-50%)
-            scale(1);
-
-    }
-
-}
-
 
 @keyframes lightBloom {
 
@@ -619,7 +110,7 @@ body {
         opacity: 0;
 
         transform:
-            rotate(var(--rotation))
+            rotate(var(--angle))
             translateY(-27px)
             scale(0);
 
@@ -630,7 +121,7 @@ body {
         opacity: 1;
 
         transform:
-            rotate(var(--rotation))
+            rotate(var(--angle))
             translateY(-27px)
             scale(1);
 
@@ -638,314 +129,22 @@ body {
 
 }
 
+
+/* ================================= */
+/* BRILHO PULSANDO */
+/* ================================= */
 
 @keyframes glowPulse {
 
     from {
 
-        opacity: 0.75;
+        opacity: 0.7;
 
     }
 
     to {
 
         opacity: 1;
-
-    }
-
-}
-
-
-@keyframes centerBloom {
-
-    from {
-
-        transform:
-            translate(-50%, -50%)
-            scale(0);
-
-    }
-
-    to {
-
-        transform:
-            translate(-50%, -50%)
-            scale(1);
-
-    }
-
-}
-
-
-@keyframes centerGlow {
-
-    from {
-
-        box-shadow:
-            0 0 10px #ffd000,
-            0 0 20px #ff9d00;
-
-    }
-
-    to {
-
-        box-shadow:
-            0 0 20px #fff000,
-            0 0 40px #ff7b00;
-
-    }
-
-}
-
-
-/* ================================= */
-/* MENSAGEM */
-/* ================================= */
-
-.mensagem {
-
-    max-width: 650px;
-
-    margin: 10px auto 30px;
-
-    padding: 0 25px;
-
-    opacity: 0;
-
-    animation:
-        messageAppear 1.5s ease-out 5s forwards;
-
-}
-
-
-.mensagem h2 {
-
-    color: #ffb6c1;
-
-    font-size: 24px;
-
-    line-height: 1.5;
-
-    margin-bottom: 18px;
-
-    text-shadow:
-        0 0 10px rgba(255, 105, 135, 0.4);
-
-}
-
-
-.mensagem p {
-
-    color: #f1dce2;
-
-    font-size: 16px;
-
-    line-height: 1.7;
-
-}
-
-
-.mensagem .assinatura {
-
-    margin-top: 20px;
-
-    color: #ff8fa3;
-
-    font-size: 19px;
-
-    font-weight: bold;
-
-}
-
-
-@keyframes messageAppear {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(20px);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0);
-
-    }
-
-}
-
-
-/* ================================= */
-/* BOTÃO */
-/* ================================= */
-
-.proximo {
-
-    margin: 30px 20px 40px;
-
-    opacity: 0;
-
-    animation:
-        messageAppear 1.5s ease-out 6s forwards;
-
-}
-
-
-.proximo a {
-
-    display: inline-block;
-
-    padding: 15px 28px;
-
-    border-radius: 30px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e91e63,
-            #ad1457
-        );
-
-    color: white;
-
-    text-decoration: none;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    box-shadow:
-        0 5px 20px rgba(233, 30, 99, 0.4);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-
-}
-
-
-.proximo a:active {
-
-    transform: scale(0.94);
-
-    box-shadow:
-        0 2px 10px rgba(233, 30, 99, 0.3);
-
-}
-
-
-/* ================================= */
-/* RODAPÉ */
-/* ================================= */
-
-footer {
-
-    text-align: center;
-
-    padding: 10px 20px 30px;
-
-}
-
-
-footer p {
-
-    color: #b98c96;
-
-    font-size: 13px;
-
-    font-style: italic;
-
-}
-
-
-/* ================================= */
-/* CELULAR */
-/* ================================= */
-
-@media (max-width: 600px) {
-
-    .pagina {
-
-        padding-top: 25px;
-
-    }
-
-
-    .cabecalho h1 {
-
-        font-size: 28px;
-
-    }
-
-
-    .cabecalho p {
-
-        font-size: 15px;
-
-    }
-
-
-    .jardim {
-
-        height: 390px;
-
-        margin-top: 15px;
-
-    }
-
-
-    .flower-1 {
-
-        left: -4%;
-
-        transform: scale(0.65);
-
-    }
-
-
-    .flower-2 {
-
-        left: 20%;
-
-        transform: scale(0.85);
-
-    }
-
-
-    .flower-3 {
-
-        left: 48%;
-
-        transform: scale(0.75);
-
-    }
-
-
-    .flower-4 {
-
-        left: 73%;
-
-        transform: scale(0.6);
-
-    }
-
-
-    .mensagem {
-
-        padding: 0 20px;
-
-    }
-
-
-    .mensagem h2 {
-
-        font-size: 21px;
 
     }
 
