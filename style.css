@@ -16,7 +16,7 @@
 
 
 /* ========================================= */
-/* CORPO DA PÁGINA */
+/* CORPO */
 /* ========================================= */
 
 body {
@@ -27,11 +27,12 @@ body {
     color: #ffffff;
 
     background:
-        linear-gradient(
-            180deg,
-            #16001f 0%,
-            #35113f 45%,
-            #16001f 100%
+        radial-gradient(
+            circle at 50% 0%,
+            #5b1b68 0%,
+            #35113f 35%,
+            #16001f 75%,
+            #09000d 100%
         );
 
     overflow-x: hidden;
@@ -39,19 +40,44 @@ body {
 
 
 /* ========================================= */
-/* CONTEÚDO PRINCIPAL */
+/* CONTEÚDO - EFEITO DE VIDRO 🪟 */
 /* ========================================= */
 
 .conteudo {
-    width: 100%;
+    width: calc(100% - 30px);
 
-    max-width: 700px;
+    max-width: 720px;
 
-    margin: 0 auto;
+    margin: 30px auto;
 
-    padding: 55px 25px 60px;
+    padding: 45px 30px 50px;
 
     text-align: center;
+
+    /* VIDRO */
+
+    background:
+        rgba(255, 255, 255, 0.09);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    /* BORDA DO VIDRO */
+
+    border:
+        1px solid rgba(255, 255, 255, 0.20);
+
+    border-radius: 28px;
+
+    /* SOMBRA */
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.35),
+        inset 0 1px 1px rgba(255, 255, 255, 0.12);
+
 }
 
 
@@ -60,17 +86,19 @@ body {
 /* ========================================= */
 
 .conteudo h1 {
-    margin-bottom: 30px;
+
+    margin-bottom: 35px;
 
     color: #ffb6d9;
 
-    font-size: 34px;
+    font-size: 38px;
 
     line-height: 1.3;
 
     text-shadow:
-        0 0 10px rgba(255, 105, 180, 0.7),
-        0 0 25px rgba(255, 105, 180, 0.35);
+        0 0 10px rgba(255, 105, 180, 0.8),
+        0 0 25px rgba(255, 105, 180, 0.45);
+
 }
 
 
@@ -79,32 +107,38 @@ body {
 /* ========================================= */
 
 .conteudo p {
-    margin-bottom: 22px;
 
-    color: #f5e6f0;
+    margin-bottom: 28px;
 
-    font-size: 18px;
+    color: #fff0f7;
 
-    line-height: 1.8;
+    font-size: 21px;
+
+    line-height: 1.9;
+
+    text-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.35);
+
 }
 
 
 /* ========================================= */
-/* BOTÃO - ABRIR MINHA SURPRESA ❤️ */
+/* BOTÃO - ABRIR SURPRESA ❤️ */
 /* ========================================= */
 
 #botaoMensagem {
+
     display: block;
 
     width: 100%;
 
-    margin: 35px auto 25px;
+    margin: 40px auto 30px;
 
-    padding: 18px 25px;
+    padding: 20px 25px;
 
     border: none;
 
-    border-radius: 12px;
+    border-radius: 15px;
 
     background:
         linear-gradient(
@@ -116,75 +150,79 @@ body {
 
     color: #ffffff;
 
-    font-size: 21px;
+    font-size: 22px;
 
     font-weight: bold;
 
     cursor: pointer;
 
     box-shadow:
-        0 8px 25px rgba(255, 20, 110, 0.35),
-        0 0 20px rgba(255, 105, 180, 0.2);
+        0 8px 28px rgba(255, 20, 110, 0.45),
+        0 0 25px rgba(255, 105, 180, 0.25);
 
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease;
+
 }
 
 
-/* TOQUE NO CELULAR */
-
 #botaoMensagem:active {
+
     transform: scale(0.96);
 
     box-shadow:
-        0 4px 12px rgba(255, 20, 110, 0.3);
+        0 4px 14px rgba(255, 20, 110, 0.35);
+
 }
 
 
 /* ========================================= */
-/* MENSAGEM QUE APARECE PELO JAVASCRIPT */
+/* MENSAGEM DO JAVASCRIPT */
 /* ========================================= */
 
 #mensagem {
-    min-height: 30px;
 
-    margin-top: 15px;
+    min-height: 35px;
+
+    margin-top: 20px;
 
     color: #ffb6d9;
 
-    font-size: 19px;
+    font-size: 21px;
 
     font-weight: bold;
 
-    line-height: 1.6;
+    line-height: 1.7;
 
     text-shadow:
-        0 0 10px rgba(255, 105, 180, 0.5);
+        0 0 12px rgba(255, 105, 180, 0.6);
+
 }
 
 
 /* ========================================= */
-/* BOTÃO PARA A PÁGINA 2 🌻 */
+/* BOTÃO PARA PÁGINA 2 🌻 */
 /* ========================================= */
 
 .proxima-pagina {
-    margin-top: 45px;
+
+    margin-top: 50px;
 
     text-align: center;
+
 }
 
 
-/* BOTÃO */
-
 .proxima-pagina a {
+
     display: inline-block;
 
-    min-width: 220px;
+    min-width: 250px;
 
-    padding: 17px 30px;
+    padding: 19px 32px;
 
-    border-radius: 40px;
+    border-radius: 45px;
 
     background:
         linear-gradient(
@@ -194,97 +232,142 @@ body {
             #ad1457
         );
 
-    border: 2px solid rgba(255, 255, 255, 0.25);
+    border:
+        2px solid rgba(255, 255, 255, 0.28);
 
     color: #ffffff;
 
     text-decoration: none;
 
-    font-size: 20px;
+    font-size: 22px;
 
     font-weight: bold;
 
     box-shadow:
-        0 7px 25px rgba(233, 30, 99, 0.45),
-        0 0 18px rgba(255, 105, 180, 0.25);
+        0 8px 28px rgba(233, 30, 99, 0.5),
+        0 0 22px rgba(255, 105, 180, 0.3);
 
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease;
+
 }
 
 
-/* TOQUE NO CELULAR */
-
 .proxima-pagina a:active {
+
     transform: scale(0.94);
 
     box-shadow:
-        0 3px 12px rgba(233, 30, 99, 0.35);
+        0 4px 14px rgba(233, 30, 99, 0.4);
+
 }
 
 
 /* ========================================= */
-/* MÚSICA */
+/* ÁUDIO */
 /* ========================================= */
 
 audio {
+
     display: none;
+
 }
 
 
 /* ========================================= */
-/* CELULAR */
+/* CELULAR 📱 */
 /* ========================================= */
 
 @media (max-width: 600px) {
 
+
     .conteudo {
-        padding: 45px 20px 55px;
+
+        width: calc(100% - 20px);
+
+        margin: 20px auto;
+
+        padding: 40px 22px 45px;
+
+        border-radius: 25px;
+
+        backdrop-filter:
+            blur(20px);
+
+        -webkit-backdrop-filter:
+            blur(20px);
+
     }
 
+
+    /* TÍTULO */
 
     .conteudo h1 {
-        font-size: 29px;
 
-        margin-bottom: 27px;
+        font-size: 34px;
+
+        line-height: 1.35;
+
+        margin-bottom: 32px;
+
     }
 
+
+    /* TEXTOS */
 
     .conteudo p {
-        font-size: 17px;
 
-        line-height: 1.75;
+        font-size: 20px;
 
-        margin-bottom: 20px;
+        line-height: 1.85;
+
+        margin-bottom: 27px;
+
     }
 
+
+    /* BOTÃO PRINCIPAL */
 
     #botaoMensagem {
-        font-size: 19px;
 
-        padding: 17px 18px;
+        font-size: 21px;
 
-        border-radius: 12px;
+        padding: 19px 15px;
+
+        border-radius: 14px;
+
     }
 
+
+    /* MENSAGEM */
 
     #mensagem {
-        font-size: 18px;
+
+        font-size: 20px;
+
+        line-height: 1.7;
+
     }
 
 
+    /* CONTINUAR */
+
     .proxima-pagina {
-        margin-top: 40px;
+
+        margin-top: 45px;
+
     }
 
 
     .proxima-pagina a {
-        min-width: 220px;
 
-        padding: 17px 28px;
+        min-width: 240px;
 
-        font-size: 20px;
+        padding: 18px 28px;
+
+        font-size: 21px;
+
     }
 
 }
