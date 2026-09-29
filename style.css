@@ -356,3 +356,26 @@ audio {
         font-size: 21px;
     }
 }
+/* ========================================= */
+/* TESTE DE TAMANHO - PÁGINA 1 🔥 */
+/* ========================================= */
+
+.conteudo h1 {
+    font-size: 60px !important;
+}
+
+.conteudo p {
+    font-size: 30px !important;
+}
+
+#botaoMensagem {
+    font-size: 28px !important;
+}
+
+#mensagem {
+    font-size: 28px !important;
+}
+
+.proxima-pagina a {
+    font-size: 28px !important;
+}
