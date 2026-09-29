@@ -394,76 +394,76 @@ function desenharFolhas(
             "#18351b"
         );
 
-        gradiente.addColorStop(
-            0.55,
-            "#376b2b"
-        );
+    gradiente.addColorStop(
+        0.55,
+        "#376b2b"
+    );
 
-        gradiente.addColorStop(
-            1,
-            "#638d3b"
-        );
-
-
-        ctx.fillStyle =
-            gradiente;
+    gradiente.addColorStop(
+        1,
+        "#638d3b"
+    );
 
 
-        /*
-           Forma da folha
-        */
-
-        ctx.beginPath();
-
-        ctx.moveTo(
-            0,
-            0
-        );
-
-        ctx.quadraticCurveTo(
-            tamanhoFolha * 0.45,
-            -tamanhoFolha * 0.75,
-
-            tamanhoFolha,
-            -tamanhoFolha * 0.15
-        );
-
-        ctx.quadraticCurveTo(
-            tamanhoFolha * 0.45,
-            tamanhoFolha * 0.05,
-
-            0,
-            0
-        );
-
-        ctx.fill();
+    ctx.fillStyle =
+        gradiente;
 
 
-        /*
-           Nervura
-        */
+    /*
+       Forma da folha
+    */
 
-        ctx.strokeStyle =
-            "rgba(190, 230, 130, 0.25)";
+    ctx.beginPath();
 
-        ctx.lineWidth = 1;
+    ctx.moveTo(
+        0,
+        0
+    );
 
-        ctx.beginPath();
+    ctx.quadraticCurveTo(
+        tamanhoFolha * 0.45,
+        -tamanhoFolha * 0.75,
 
-        ctx.moveTo(
-            0,
-            0
-        );
+        tamanhoFolha,
+        -tamanhoFolha * 0.15
+    );
 
-        ctx.lineTo(
-            tamanhoFolha * 0.8,
-            -tamanhoFolha * 0.18
-        );
+    ctx.quadraticCurveTo(
+        tamanhoFolha * 0.45,
+        tamanhoFolha * 0.05,
 
-        ctx.stroke();
+        0,
+        0
+    );
+
+    ctx.fill();
 
 
-        ctx.restore();
+    /*
+       Nervura
+    */
+
+    ctx.strokeStyle =
+        "rgba(190, 230, 130, 0.25)";
+
+    ctx.lineWidth = 1;
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        0,
+        0
+    );
+
+    ctx.lineTo(
+        tamanhoFolha * 0.8,
+        -tamanhoFolha * 0.18
+    );
+
+    ctx.stroke();
+
+
+    ctx.restore();
     }
 }
 
@@ -1252,9 +1252,33 @@ function iniciar() {
 }
 
 
+/* =========================================================
+   REDIMENSIONAMENTO
+========================================================= */
+
 window.addEventListener(
     "resize",
     function () {
+
+        const novaLargura =
+            canvas.clientWidth;
+
+        const novaAltura =
+            canvas.clientHeight;
+
+
+        /*
+           Ignora mudanças causadas apenas
+           pela barra do navegador no celular.
+        */
+
+        if (
+            novaLargura === largura &&
+            novaAltura === altura
+        ) {
+            return;
+        }
+
 
         ajustarCanvas();
 
