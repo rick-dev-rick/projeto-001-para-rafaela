@@ -23,11 +23,15 @@ header h1 {
     font-size: 32px;
     color: #e91e63;
     margin-bottom: 15px;
+
+    animation: aparecer 1s ease;
 }
 
 header p {
     font-size: 17px;
     color: #666;
+
+    animation: aparecer 1.5s ease;
 }
 
 
@@ -58,6 +62,8 @@ main {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
 
     overflow: hidden;
+
+    animation: subir 0.8s ease;
 }
 
 .foto img {
@@ -68,6 +74,15 @@ main {
     display: block;
 
     border-radius: 10px;
+
+    transition: transform 0.4s ease;
+}
+
+
+/* Efeito ao tocar/passsar na foto */
+
+.foto:hover img {
+    transform: scale(1.05);
 }
 
 
@@ -75,11 +90,41 @@ main {
 
 footer {
     padding: 40px 20px;
+
+    animation: aparecer 2s ease;
 }
 
 footer p {
     color: #e91e63;
     font-size: 16px;
+}
+
+
+/* Animações */
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes subir {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
@@ -98,5 +143,4 @@ footer p {
     .foto img {
         height: 260px;
     }
-
 }
