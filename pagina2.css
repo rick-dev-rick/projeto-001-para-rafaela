@@ -1,11 +1,6 @@
 /* ========================================= */
 /* PROJETO #001 - PARA RAFAELA ❤️ */
-/* PÁGINA 2 */
-/* ========================================= */
-
-
-/* ========================================= */
-/* RESET */
+/* PÁGINA 2 - FLOR DE LUZ ✨ */
 /* ========================================= */
 
 * {
@@ -14,146 +9,96 @@
     box-sizing: border-box;
 }
 
-
-/* ========================================= */
-/* CORPO */
-/* ========================================= */
-
 body {
-
     min-height: 100vh;
-
     font-family: Arial, sans-serif;
-
     color: white;
-
     background:
-        radial-gradient(
-            circle at 50% 30%,
-            #521348 0%,
-            #2b0b35 35%,
-            #120018 70%,
-            #050008 100%
-        );
-
+        radial-gradient(circle at 50% 30%,
+        #681653 0%,
+        #35103f 35%,
+        #17001f 68%,
+        #050008 100%);
     overflow-x: hidden;
-
 }
-
 
 /* ========================================= */
 /* PÁGINA */
 /* ========================================= */
 
 .pagina {
-
     width: 100%;
-
     min-height: 100vh;
-
     padding: 40px 20px 55px;
-
 }
 
-
 /* ========================================= */
-/* CABEÇALHO ❤️ */
+/* CABEÇALHO */
 /* ========================================= */
 
 .cabecalho {
-
     text-align: center;
-
     max-width: 600px;
-
     margin: 0 auto;
-
 }
 
-
 .cabecalho h1 {
-
-    color: #ffd5e6;
-
+    color: #ffd8e8;
     font-size: 31px;
-
     line-height: 1.3;
-
     margin-bottom: 12px;
 
     text-shadow:
-        0 0 10px rgba(255, 105, 180, 0.9),
-        0 0 25px rgba(255, 105, 180, 0.55);
-
+        0 0 8px rgba(255, 105, 180, 0.95),
+        0 0 20px rgba(255, 105, 180, 0.75),
+        0 0 40px rgba(255, 80, 160, 0.4);
 }
-
 
 .cabecalho p {
-
-    color: #f5dce8;
-
+    color: #f8dce9;
     font-size: 16px;
-
     line-height: 1.6;
-
 }
 
-
 /* ========================================= */
-/* JARDIM 🌸 */
+/* JARDIM */
 /* ========================================= */
 
 .jardim {
-
     position: relative;
-
     width: 100%;
-
     height: 430px;
-
     margin-top: 5px;
-
 }
-
 
 /* ========================================= */
 /* FLOR */
 /* ========================================= */
 
 .flor {
-
     position: absolute;
-
     left: 50%;
-
     top: 52%;
 
-    width: 220px;
-
-    height: 330px;
+    width: 260px;
+    height: 350px;
 
     transform: translate(-50%, -50%);
-
 }
 
-
 /* ========================================= */
-/* BRILHO ✨ */
+/* GRANDE HALO DE LUZ */
 /* ========================================= */
 
 .brilho {
-
     position: absolute;
-
     z-index: 0;
 
-    width: 250px;
-
-    height: 250px;
+    width: 300px;
+    height: 300px;
 
     left: 50%;
-
-    top: 30px;
+    top: 10px;
 
     transform: translateX(-50%);
 
@@ -162,67 +107,80 @@ body {
     background:
         radial-gradient(
             circle,
-            rgba(255, 230, 70, 0.45) 0%,
-            rgba(255, 140, 45, 0.22) 35%,
-            rgba(255, 70, 100, 0.08) 58%,
-            transparent 72%
+            rgba(255, 255, 210, 0.95) 0%,
+            rgba(255, 231, 90, 0.65) 15%,
+            rgba(255, 169, 55, 0.35) 35%,
+            rgba(255, 80, 120, 0.18) 55%,
+            transparent 75%
         );
 
-    filter: blur(15px);
+    filter: blur(18px);
 
-    animation:
-        brilho 3s ease-in-out infinite alternate;
-
+    animation: haloFlor 3.5s ease-in-out infinite alternate;
 }
 
+@keyframes haloFlor {
+    from {
+        opacity: 0.55;
+        transform: translateX(-50%) scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.12);
+    }
+}
 
 /* ========================================= */
-/* PÉTALAS 🌼 */
+/* PÉTALAS */
 /* ========================================= */
 
 .petala {
-
     position: absolute;
-
     z-index: 2;
 
-    width: 58px;
-
-    height: 105px;
+    width: 66px;
+    height: 125px;
 
     left: 50%;
+    top: 55px;
 
-    top: 65px;
-
-    margin-left: -29px;
+    margin-left: -33px;
 
     border-radius:
-        50% 50% 45% 45%;
+        50% 50%
+        45% 45%
+        42% 42%;
 
-    transform-origin:
-        50% 100%;
+    transform-origin: 50% 100%;
 
     background:
         radial-gradient(
-            ellipse at 50% 85%,
-            #fff98a 0%,
-            #ffe01f 25%,
-            #ff9635 60%,
-            #ff4d3d 100%
+            ellipse at 50% 88%,
+            #fffde0 0%,
+            #fff36b 12%,
+            #ffd72e 30%,
+            #ff9d38 58%,
+            #ff5b54 82%,
+            #e92c61 100%
         );
 
+    border: 1px solid rgba(255, 245, 170, 0.6);
+
     box-shadow:
-        0 0 10px rgba(255, 235, 90, 0.95),
-        0 0 25px rgba(255, 145, 45, 0.8),
-        0 0 45px rgba(255, 70, 55, 0.45);
+        0 0 8px rgba(255, 248, 150, 1),
+        0 0 18px rgba(255, 220, 65, 0.95),
+        0 0 35px rgba(255, 145, 45, 0.8),
+        0 0 60px rgba(255, 65, 90, 0.4);
 
-    opacity: 1;
+    opacity: 0.95;
 
+    animation:
+        petalaBrilho 2.6s ease-in-out infinite alternate;
 }
 
-
 /* ========================================= */
-/* ROTAÇÃO DAS PÉTALAS */
+/* POSIÇÃO DAS PÉTALAS */
 /* ========================================= */
 
 .petala-1 {
@@ -257,31 +215,53 @@ body {
     transform: rotate(315deg);
 }
 
+/* ========================================= */
+/* BRILHO DAS PÉTALAS */
+/* ========================================= */
+
+@keyframes petalaBrilho {
+    from {
+        filter:
+            brightness(0.9)
+            saturate(1.05);
+
+        box-shadow:
+            0 0 8px rgba(255, 248, 150, 0.9),
+            0 0 18px rgba(255, 220, 65, 0.8),
+            0 0 35px rgba(255, 145, 45, 0.65);
+    }
+
+    to {
+        filter:
+            brightness(1.35)
+            saturate(1.25);
+
+        box-shadow:
+            0 0 12px rgba(255, 255, 190, 1),
+            0 0 28px rgba(255, 225, 70, 1),
+            0 0 50px rgba(255, 150, 45, 0.95),
+            0 0 75px rgba(255, 70, 100, 0.5);
+    }
+}
 
 /* ========================================= */
-/* CENTRO DA FLOR ❤️ */
+/* CENTRO DA FLOR */
 /* ========================================= */
 
 .centro-flor {
-
     position: absolute;
-
-    z-index: 5;
+    z-index: 6;
 
     left: 50%;
+    top: 137px;
 
-    top: 145px;
-
-    width: 72px;
-
-    height: 72px;
+    width: 82px;
+    height: 82px;
 
     transform: translateX(-50%);
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     border-radius: 50%;
@@ -289,53 +269,57 @@ body {
     background:
         radial-gradient(
             circle at 35% 30%,
-            #fff8a8,
-            #ffc52e 45%,
-            #e87519 100%
+            #ffffff 0%,
+            #fffbd0 12%,
+            #ffe85a 32%,
+            #ffbd27 58%,
+            #ed7119 100%
         );
 
-    border:
-        3px solid
-        rgba(255, 240, 140, 0.85);
+    border: 3px solid rgba(255, 248, 170, 0.95);
 
     box-shadow:
-        0 0 12px #ffd84d,
-        0 0 30px #ff9d35,
-        0 0 60px rgba(255, 90, 40, 0.65);
+        0 0 10px #ffffff,
+        0 0 22px #fff36b,
+        0 0 45px #ffbd35,
+        0 0 75px rgba(255, 100, 45, 0.85);
 
+    animation: centroBrilho 2s ease-in-out infinite alternate;
 }
 
+@keyframes centroBrilho {
+    from {
+        transform: translateX(-50%) scale(0.96);
+        filter: brightness(0.95);
+    }
+
+    to {
+        transform: translateX(-50%) scale(1.08);
+        filter: brightness(1.25);
+    }
+}
 
 .centro-flor span {
-
-    font-size: 25px;
+    font-size: 27px;
 
     filter:
-        drop-shadow(
-            0 0 5px
-            rgba(255, 255, 255, 0.9)
-        );
-
+        drop-shadow(0 0 4px white)
+        drop-shadow(0 0 8px rgba(255, 80, 130, 0.8));
 }
 
-
 /* ========================================= */
-/* CAULE 🌱 */
+/* CAULE */
 /* ========================================= */
 
 .caule {
-
     position: absolute;
-
     z-index: 1;
 
     left: 50%;
+    top: 177px;
 
-    top: 185px;
-
-    width: 13px;
-
-    height: 150px;
+    width: 15px;
+    height: 165px;
 
     transform: translateX(-50%);
 
@@ -344,230 +328,119 @@ body {
     background:
         linear-gradient(
             90deg,
-            #174c26,
-            #55a84c,
-            #174c26
+            #10391d 0%,
+            #2f7d39 25%,
+            #72c95c 50%,
+            #2f7d39 75%,
+            #10391d 100%
         );
 
     box-shadow:
-        0 0 12px rgba(80, 190, 70, 0.35);
-
+        0 0 8px rgba(90, 200, 80, 0.45),
+        0 0 20px rgba(50, 150, 70, 0.25);
 }
 
-
 /* ========================================= */
-/* FOLHAS 🍃 */
+/* FOLHAS */
 /* ========================================= */
 
 .folha {
-
     position: absolute;
-
     z-index: 2;
 
-    width: 75px;
+    width: 85px;
+    height: 40px;
 
-    height: 35px;
-
-    top: 245px;
+    top: 250px;
 
     background:
         linear-gradient(
             135deg,
-            #70c85b,
-            #237331
+            #8ee76d 0%,
+            #4eaa48 40%,
+            #1c642d 100%
         );
 
     box-shadow:
-        0 0 12px rgba(65, 180, 70, 0.35);
-
+        0 0 8px rgba(100, 220, 90, 0.45),
+        0 0 20px rgba(70, 180, 70, 0.3);
 }
-
-
-/* FOLHA ESQUERDA */
 
 .folha-esquerda {
-
-    left: 36px;
+    left: 25px;
 
     border-radius:
-        100% 0 100% 0;
+        100% 0
+        100% 0;
 
-    transform:
-        rotate(25deg);
-
+    transform: rotate(25deg);
 }
-
-
-/* FOLHA DIREITA */
 
 .folha-direita {
-
-    right: 36px;
+    right: 25px;
 
     border-radius:
-        0 100% 0 100%;
+        0 100%
+        0 100%;
 
-    transform:
-        rotate(-25deg);
-
+    transform: rotate(-25deg);
 }
 
-
 /* ========================================= */
-/* BRILHO PULSANDO 🌟 */
-/* ========================================= */
-
-.brilho {
-
-    animation:
-        brilho 3s ease-in-out infinite alternate;
-
-}
-
-
-@keyframes brilho {
-
-    from {
-
-        opacity: 0.55;
-
-        transform:
-            translateX(-50%)
-            scale(0.90);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateX(-50%)
-            scale(1.10);
-
-    }
-
-}
-
-
-/* ========================================= */
-/* ANIMAÇÃO SUAVE DAS PÉTALAS */
-/* ========================================= */
-
-.petala {
-
-    animation:
-        pulsar 2.8s ease-in-out infinite alternate;
-
-}
-
-
-@keyframes pulsar {
-
-    from {
-
-        filter:
-            brightness(0.9);
-
-    }
-
-    to {
-
-        filter:
-            brightness(1.25);
-
-    }
-
-}
-
-
-/* ========================================= */
-/* MENSAGEM 💕 */
+/* MENSAGEM */
 /* ========================================= */
 
 .mensagem {
-
     max-width: 600px;
-
     margin: 0 auto;
-
     text-align: center;
-
 }
 
-
 .mensagem h2 {
-
     color: #ffd2e2;
-
     font-size: 22px;
-
     line-height: 1.5;
-
     margin-bottom: 20px;
 
     text-shadow:
-        0 0 12px
-        rgba(255, 105, 180, 0.55);
-
+        0 0 10px rgba(255, 105, 180, 0.65),
+        0 0 25px rgba(255, 80, 150, 0.25);
 }
-
 
 .mensagem p {
-
     color: #f6dce7;
-
     font-size: 16px;
-
     line-height: 1.7;
-
     margin-bottom: 18px;
-
 }
 
-
 .mensagem .assinatura {
-
     color: #ff9fc5;
-
     font-size: 19px;
-
     font-weight: bold;
-
     margin-top: 25px;
 
     text-shadow:
-        0 0 12px
-        rgba(255, 80, 150, 0.7);
-
+        0 0 10px rgba(255, 80, 150, 0.8),
+        0 0 25px rgba(255, 80, 150, 0.35);
 }
 
-
 /* ========================================= */
-/* BOTÃO 📸 */
+/* BOTÃO */
 /* ========================================= */
 
 .proximo {
-
     text-align: center;
-
     margin-top: 35px;
-
 }
 
-
 .proximo a {
-
     display: inline-block;
 
     padding: 16px 28px;
 
     border-radius: 50px;
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.25);
 
     background:
         linear-gradient(
@@ -578,133 +451,82 @@ body {
         );
 
     color: white;
-
     text-decoration: none;
 
     font-size: 17px;
-
     font-weight: bold;
 
     box-shadow:
-        0 10px 30px
-        rgba(230, 30, 100, 0.4),
-
-        0 0 25px
-        rgba(255, 100, 180, 0.25);
+        0 10px 30px rgba(230, 30, 100, 0.4),
+        0 0 25px rgba(255, 100, 180, 0.25);
 
     transition:
-        transform 0.2s ease;
-
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
-
 
 .proximo a:active {
-
-    transform:
-        scale(0.95);
-
+    transform: scale(0.95);
 }
 
-
 /* ========================================= */
-/* RODAPÉ ❤️ */
+/* RODAPÉ */
 /* ========================================= */
 
 footer {
-
     text-align: center;
-
-    padding:
-        0 20px 25px;
-
+    padding: 0 20px 25px;
 }
-
 
 footer p {
-
     color: #d9aebd;
-
     font-size: 14px;
-
     font-style: italic;
-
 }
 
-
 /* ========================================= */
-/* CELULAR 📱 */
+/* CELULAR */
 /* ========================================= */
 
 @media (max-width: 600px) {
 
     .pagina {
-
-        padding:
-            35px 18px 50px;
-
+        padding: 35px 18px 50px;
     }
-
 
     .cabecalho h1 {
-
         font-size: 29px;
-
     }
-
 
     .cabecalho p {
-
         font-size: 16px;
-
     }
-
 
     .jardim {
-
         height: 400px;
-
         margin-top: 5px;
-
     }
 
-
     .flor {
-
         transform:
             translate(-50%, -50%)
             scale(0.88);
-
     }
-
 
     .mensagem h2 {
-
         font-size: 20px;
-
     }
-
 
     .mensagem p {
-
         font-size: 16px;
-
     }
-
 
     .mensagem .assinatura {
-
         font-size: 18px;
-
     }
-
 
     .proximo a {
-
         font-size: 17px;
-
-        padding:
-            15px 25px;
-
+        padding: 15px 25px;
     }
-
 }
