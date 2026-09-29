@@ -1,30 +1,46 @@
-/* ========================================= */
-/* PROJETO #001 - PARA RAFAELA ❤️ */
-/* FLOR DE LUZ - JAVASCRIPT */
-/* ========================================= */
+/* =========================================================
+   PROJETO #001
+   PARA RAFAELA ❤️
 
-const canvas = document.getElementById("florCanvas");
+   Jardim de flores luminosas
+   Canvas + JavaScript
+========================================================= */
+
+
+const canvas = document.getElementById("jardimCanvas");
+
 const ctx = canvas.getContext("2d");
 
-let largura;
-let altura;
-let escala;
+
+/* =========================================================
+   CONFIGURAÇÃO
+========================================================= */
+
+let largura = 0;
+let altura = 0;
+
+let flores = [];
+
+let tempo = 0;
 
 
-/* ========================================= */
-/* AJUSTAR CANVAS */
-/* ========================================= */
+/* =========================================================
+   AJUSTA O CANVAS
+========================================================= */
 
 function ajustarCanvas() {
 
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = Math.min(
+        window.devicePixelRatio || 1,
+        2
+    );
 
-    const rect = canvas.getBoundingClientRect();
+    largura = canvas.clientWidth;
 
-    largura = rect.width;
-    altura = rect.height;
+    altura = canvas.clientHeight;
 
     canvas.width = largura * dpr;
+
     canvas.height = altura * dpr;
 
     ctx.setTransform(
@@ -35,467 +51,416 @@ function ajustarCanvas() {
         0,
         0
     );
-
-    escala = Math.min(
-        largura / 400,
-        altura / 500
-    );
 }
 
 
-/* ========================================= */
-/* DESENHAR UMA PÉTALA */
-/* ========================================= */
+/* =========================================================
+   FUNÇÃO ALEATÓRIA
+========================================================= */
 
-function desenharPetala(
+function aleatorio(min, max) {
+
+    return Math.random() * (max - min) + min;
+}
+
+
+/* =========================================================
+   CRIA UMA FLOR
+========================================================= */
+
+function criarFlor(
     x,
-    y,
+    baseY,
     tamanho,
-    larguraPetala,
-    rotacao,
-    cor1,
-    cor2,
-    brilho
+    atraso,
+    inclinacao
 ) {
 
-    ctx.save();
+    return {
 
-    ctx.translate(x, y);
+        x: x,
 
-    ctx.rotate(rotacao);
+        baseY: baseY,
 
-    /*
-     * A sombra luminosa da pétala.
-     */
+        tamanho: tamanho,
 
-    ctx.shadowColor = cor1;
-    ctx.shadowBlur = brilho;
+        atraso: atraso,
 
+        inclinacao: inclinacao,
 
-    /*
-     * Gradiente da pétala.
-     */
+        crescimento: 0,
 
-    const gradiente = ctx.createRadialGradient(
-        0,
-        tamanho * 0.75,
-        5,
-        0,
-        tamanho * 0.3,
-        tamanho
-    );
+        brilho: aleatorio(0.75, 1.15),
 
-    gradiente.addColorStop(
-        0,
-        "#fffde8"
-    );
+        fase: aleatorio(0, Math.PI * 2),
 
-    gradiente.addColorStop(
-        0.18,
-        cor1
-    );
-
-    gradiente.addColorStop(
-        0.55,
-        cor2
-    );
-
-    gradiente.addColorStop(
-        1,
-        "rgba(255,70,110,0.15)"
-    );
-
-
-    ctx.fillStyle = gradiente;
-
-
-    /*
-     * Forma orgânica da pétala.
-     */
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        0,
-        0
-    );
-
-
-    ctx.bezierCurveTo(
-        -larguraPetala,
-        -tamanho * 0.28,
-
-        -larguraPetala * 0.85,
-        -tamanho * 0.78,
-
-        0,
-        -tamanho
-    );
-
-
-    ctx.bezierCurveTo(
-        larguraPetala * 0.85,
-        -tamanho * 0.78,
-
-        larguraPetala,
-        -tamanho * 0.28,
-
-        0,
-        0
-    );
-
-
-    ctx.closePath();
-
-    ctx.fill();
-
-
-    /*
-     * Reflexo luminoso dentro da pétala.
-     */
-
-    ctx.globalAlpha = 0.45;
-
-    ctx.shadowBlur = 0;
-
-    const reflexo = ctx.createRadialGradient(
-        0,
-        -tamanho * 0.55,
-        2,
-        0,
-        -tamanho * 0.55,
-        larguraPetala
-    );
-
-    reflexo.addColorStop(
-        0,
-        "rgba(255,255,255,0.9)"
-    );
-
-    reflexo.addColorStop(
-        1,
-        "rgba(255,255,255,0)"
-    );
-
-    ctx.fillStyle = reflexo;
-
-    ctx.beginPath();
-
-    ctx.ellipse(
-        0,
-        -tamanho * 0.58,
-        larguraPetala * 0.35,
-        tamanho * 0.25,
-        0,
-        0,
-        Math.PI * 2
-    );
-
-    ctx.fill();
-
-
-    ctx.restore();
+        folhas: Math.floor(
+            aleatorio(3, 6)
+        )
+    };
 }
 
 
-/* ========================================= */
-/* DESENHAR CAULE */
-/* ========================================= */
+/* =========================================================
+   CRIA O JARDIM
+========================================================= */
 
-function desenharCaule(
-    x,
-    y,
-    comprimento
-) {
+function criarJardim() {
+
+    flores = [];
+
+    /*
+       Flores do fundo
+    */
+
+    const floresFundo = 7;
+
+
+    for (let i = 0; i < floresFundo; i++) {
+
+        const x = aleatorio(
+            20,
+            largura - 20
+        );
+
+        const tamanho = aleatorio(
+            0.32,
+            0.55
+        );
+
+        flores.push(
+            criarFlor(
+                x,
+                altura - aleatorio(10, 45),
+                tamanho,
+                i * 0.25,
+                aleatorio(-0.20, 0.20)
+            )
+        );
+    }
+
+
+    /*
+       Flores intermediárias
+    */
+
+    const floresMeio = 5;
+
+
+    for (let i = 0; i < floresMeio; i++) {
+
+        const x = aleatorio(
+            20,
+            largura - 20
+        );
+
+        const tamanho = aleatorio(
+            0.52,
+            0.75
+        );
+
+        flores.push(
+            criarFlor(
+                x,
+                altura - aleatorio(5, 25),
+                tamanho,
+                1.2 + i * 0.35,
+                aleatorio(-0.18, 0.18)
+            )
+        );
+    }
+
+
+    /*
+       Flor principal
+    */
+
+    flores.push(
+        criarFlor(
+            largura / 2,
+            altura + 5,
+            1,
+            2.7,
+            0
+        )
+    );
+}
+
+
+/* =========================================================
+   DESENHA O CAULE
+========================================================= */
+
+function desenharCaule(flor) {
+
+    const tamanho = flor.tamanho;
+
+    const crescimento = flor.crescimento;
+
+    const alturaCaule =
+        300 * tamanho * crescimento;
+
+
+    if (alturaCaule <= 0) {
+        return;
+    }
+
+
+    const x = flor.x;
+
+    const y = flor.baseY;
+
+
+    const inclinacao =
+        flor.inclinacao *
+        alturaCaule;
+
+
+    /*
+       Brilho atrás do caule
+    */
 
     ctx.save();
 
-    ctx.lineCap = "round";
+    ctx.shadowBlur =
+        12 * flor.brilho;
 
+    ctx.shadowColor =
+        "rgba(80, 255, 100, 0.25)";
+
+
+    /*
+       Caule
+    */
 
     const gradiente =
         ctx.createLinearGradient(
-            x - 10,
-            0,
-            x + 10,
-            0
+            x,
+            y,
+            x + inclinacao,
+            y - alturaCaule
         );
 
 
     gradiente.addColorStop(
         0,
-        "#123719"
+        "#162516"
     );
 
     gradiente.addColorStop(
-        0.45,
-        "#55a94d"
-    );
-
-    gradiente.addColorStop(
-        0.55,
-        "#83d76b"
+        0.5,
+        "#315a28"
     );
 
     gradiente.addColorStop(
         1,
-        "#163c1c"
+        "#638b38"
     );
 
 
     ctx.strokeStyle = gradiente;
 
-    ctx.lineWidth = 13;
+    ctx.lineWidth =
+        Math.max(
+            2,
+            5 * tamanho
+        );
 
-    ctx.shadowColor =
-        "rgba(100,220,100,0.5)";
-
-    ctx.shadowBlur = 15;
+    ctx.lineCap = "round";
 
 
     ctx.beginPath();
 
-    ctx.moveTo(x, y);
+    ctx.moveTo(
+        x,
+        y
+    );
 
     ctx.quadraticCurveTo(
-        x - 5,
-        y + comprimento * 0.45,
+        x + inclinacao * 0.3,
+        y - alturaCaule * 0.45,
 
-        x + 3,
-        y + comprimento
+        x + inclinacao,
+        y - alturaCaule
     );
 
     ctx.stroke();
 
-
     ctx.restore();
-}
-
-
-/* ========================================= */
-/* DESENHAR FOLHA */
-/* ========================================= */
-
-function desenharFolha(
-    x,
-    y,
-    tamanho,
-    rotacao
-) {
-
-    ctx.save();
-
-    ctx.translate(x, y);
-
-    ctx.rotate(rotacao);
-
-
-    const gradiente =
-        ctx.createLinearGradient(
-            0,
-            0,
-            tamanho,
-            0
-        );
-
-
-    gradiente.addColorStop(
-        0,
-        "#1c5c2b"
-    );
-
-    gradiente.addColorStop(
-        0.5,
-        "#69c95b"
-    );
-
-    gradiente.addColorStop(
-        1,
-        "#b0ef79"
-    );
-
-
-    ctx.fillStyle = gradiente;
-
-    ctx.shadowColor =
-        "rgba(100,220,100,0.45)";
-
-    ctx.shadowBlur = 15;
-
-
-    ctx.beginPath();
-
-    ctx.moveTo(0, 0);
-
-    ctx.bezierCurveTo(
-        tamanho * 0.35,
-        -tamanho * 0.65,
-
-        tamanho * 0.9,
-        -tamanho * 0.55,
-
-        tamanho,
-        0
-    );
-
-    ctx.bezierCurveTo(
-        tamanho * 0.65,
-        tamanho * 0.35,
-
-        tamanho * 0.25,
-        tamanho * 0.3,
-
-        0,
-        0
-    );
-
-    ctx.closePath();
-
-    ctx.fill();
 
 
     /*
-     * Veia central da folha.
-     */
+       Folhas
+    */
 
-    ctx.shadowBlur = 0;
-
-    ctx.strokeStyle =
-        "rgba(220,255,200,0.55)";
-
-    ctx.lineWidth = 2;
-
-    ctx.beginPath();
-
-    ctx.moveTo(3, 0);
-
-    ctx.lineTo(
-        tamanho * 0.85,
-        -2
+    desenharFolhas(
+        flor,
+        alturaCaule,
+        inclinacao
     );
-
-    ctx.stroke();
-
-
-    ctx.restore();
 }
 
 
-/* ========================================= */
-/* PARTÍCULAS */
-/* ========================================= */
+/* =========================================================
+   DESENHA FOLHAS
+========================================================= */
 
-const particulas = [];
-
-
-function criarParticulas() {
-
-    particulas.length = 0;
-
-
-    for (let i = 0; i < 32; i++) {
-
-        particulas.push({
-
-            angulo:
-                Math.random() *
-                Math.PI *
-                2,
-
-            distancia:
-                100 +
-                Math.random() * 120,
-
-            tamanho:
-                1 +
-                Math.random() * 3,
-
-            velocidade:
-                0.0004 +
-                Math.random() * 0.001,
-
-            fase:
-                Math.random() *
-                Math.PI *
-                2
-        });
-    }
-}
-
-
-/* ========================================= */
-/* DESENHAR PARTÍCULAS */
-/* ========================================= */
-
-function desenharParticulas(
-    centroX,
-    centroY,
-    tempo
+function desenharFolhas(
+    flor,
+    alturaCaule,
+    inclinacao
 ) {
 
-    for (const particula of particulas) {
+    const tamanho =
+        flor.tamanho;
 
-        const angulo =
-            particula.angulo +
-            tempo * particula.velocidade;
+    const quantidade =
+        flor.folhas;
 
 
-        const distancia =
-            particula.distancia *
-            escala;
+    for (
+        let i = 0;
+        i < quantidade;
+        i++
+    ) {
+
+        const progresso =
+            0.18 +
+            (i / quantidade) * 0.65;
 
 
         const x =
-            centroX +
-            Math.cos(angulo) *
-            distancia;
+            flor.x +
+            inclinacao * progresso;
 
 
         const y =
-            centroY +
-            Math.sin(angulo) *
-            distancia;
+            flor.baseY -
+            alturaCaule * progresso;
 
 
-        const pulsar =
-            0.5 +
-            Math.sin(
-                tempo * 0.003 +
-                particula.fase
-            ) * 0.5;
+        const lado =
+            i % 2 === 0
+                ? -1
+                : 1;
+
+
+        const tamanhoFolha =
+            35 *
+            tamanho *
+            (1 - progresso * 0.35);
 
 
         ctx.save();
 
 
-        ctx.globalAlpha =
-            0.2 +
-            pulsar * 0.8;
+        ctx.translate(
+            x,
+            y
+        );
+
+
+        ctx.rotate(
+            lado *
+            (0.35 + progresso * 0.5)
+        );
+
+
+        /*
+           Brilho suave
+        */
+
+        ctx.shadowBlur = 8;
+
+        ctx.shadowColor =
+            "rgba(80, 200, 60, 0.35)";
+
+
+        /*
+           Gradiente da folha
+        */
+
+        const gradiente =
+            ctx.createLinearGradient(
+                0,
+                0,
+                tamanhoFolha,
+                0
+            );
+
+
+        gradiente.addColorStop(
+            0,
+            "#18351b"
+        );
+
+        gradiente.addColorStop(
+            0.55,
+            "#376b2b"
+        );
+
+        gradiente.addColorStop(
+            1,
+            "#638d3b"
+        );
 
 
         ctx.fillStyle =
-            "#fff5a8";
+            gradiente;
 
 
-        ctx.shadowColor =
-            "#ffe76a";
-
-        ctx.shadowBlur =
-            12;
-
+        /*
+           Forma da folha
+        */
 
         ctx.beginPath();
 
-        ctx.arc(
-            x,
-            y,
-            particula.tamanho *
-            (0.7 + pulsar),
+        ctx.moveTo(
             0,
-            Math.PI * 2
+            0
+        );
+
+        ctx.quadraticCurveTo(
+            tamanhoFolha * 0.45,
+            -tamanhoFolha * 0.75,
+
+            tamanhoFolha,
+            -tamanhoFolha * 0.15
+        );
+
+        ctx.quadraticCurveTo(
+            tamanhoFolha * 0.45,
+            tamanhoFolha * 0.05,
+
+            0,
+            0
         );
 
         ctx.fill();
+
+
+        /*
+           Nervura
+        */
+
+        ctx.strokeStyle =
+            "rgba(190, 230, 130, 0.25)";
+
+        ctx.lineWidth = 1;
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            0,
+            0
+        );
+
+        ctx.lineTo(
+            tamanhoFolha * 0.8,
+            -tamanhoFolha * 0.18
+        );
+
+        ctx.stroke();
 
 
         ctx.restore();
@@ -503,135 +468,483 @@ function desenharParticulas(
 }
 
 
-/* ========================================= */
-/* DESENHAR LUZ CENTRAL */
-/* ========================================= */
+/* =========================================================
+   DESENHA A FLOR
+========================================================= */
 
-function desenharAura(
-    x,
-    y,
-    raio,
-    intensidade
-) {
+function desenharFlor(flor) {
 
-    const aura =
-        ctx.createRadialGradient(
-            x,
-            y,
-            0,
-            x,
-            y,
-            raio
+    const crescimento =
+        flor.crescimento;
+
+
+    if (crescimento <= 0) {
+        return;
+    }
+
+
+    const tamanho =
+        flor.tamanho;
+
+
+    const alturaCaule =
+        300 *
+        tamanho *
+        crescimento;
+
+
+    const topoX =
+        flor.x +
+        flor.inclinacao *
+        alturaCaule;
+
+
+    const topoY =
+        flor.baseY -
+        alturaCaule;
+
+
+    /*
+       A flor cresce depois do caule
+    */
+
+    const abertura =
+        Math.min(
+            1,
+            Math.max(
+                0,
+                (crescimento - 0.55) / 0.45
+            )
         );
 
 
-    aura.addColorStop(
+    if (abertura <= 0) {
+        return;
+    }
+
+
+    ctx.save();
+
+
+    ctx.translate(
+        topoX,
+        topoY
+    );
+
+
+    /*
+       Pequena oscilação natural
+    */
+
+    const movimento =
+        Math.sin(
+            tempo * 0.001 +
+            flor.fase
+        ) * 0.025;
+
+
+    ctx.rotate(
+        flor.inclinacao +
+        movimento
+    );
+
+
+    const escala =
+        tamanho *
+        (0.75 + abertura * 0.25);
+
+
+    ctx.scale(
+        escala,
+        escala
+    );
+
+
+    /*
+       Brilho externo
+    */
+
+    const brilho =
+        25 +
+        Math.sin(
+            tempo * 0.002 +
+            flor.fase
+        ) * 8;
+
+
+    ctx.shadowBlur =
+        brilho;
+
+
+    ctx.shadowColor =
+        "rgba(255, 95, 25, 0.9)";
+
+
+    /*
+       Halo da flor
+    */
+
+    const halo =
+        ctx.createRadialGradient(
+            0,
+            0,
+            4,
+            0,
+            0,
+            75
+        );
+
+
+    halo.addColorStop(
         0,
-        `rgba(255,255,220,${intensidade})`
+        "rgba(255, 220, 90, 0.35)"
     );
 
-    aura.addColorStop(
-        0.2,
-        `rgba(255,220,70,${intensidade * 0.65})`
+    halo.addColorStop(
+        0.35,
+        "rgba(255, 100, 30, 0.16)"
     );
 
-    aura.addColorStop(
-        0.5,
-        `rgba(255,120,50,${intensidade * 0.25})`
-    );
-
-    aura.addColorStop(
+    halo.addColorStop(
         1,
-        "rgba(255,60,100,0)"
+        "rgba(255, 50, 0, 0)"
     );
 
 
-    ctx.fillStyle = aura;
+    ctx.fillStyle =
+        halo;
+
 
     ctx.beginPath();
 
     ctx.arc(
-        x,
-        y,
-        raio,
+        0,
+        0,
+        75,
         0,
         Math.PI * 2
     );
 
     ctx.fill();
-}
 
 
-/* ========================================= */
-/* DESENHAR CORAÇÃO */
-/* ========================================= */
+    /*
+       Desenha as pétalas
+    */
 
-function desenharCoracao(
-    x,
-    y,
-    tamanho
-) {
+    const quantidadePetalas = 8;
 
-    ctx.save();
 
-    ctx.translate(x, y);
+    for (
+        let i = 0;
+        i < quantidadePetalas;
+        i++
+    ) {
 
-    ctx.scale(
-        tamanho,
-        tamanho
+        const angulo =
+            (Math.PI * 2 / quantidadePetalas) *
+            i;
+
+
+        desenharPetala(
+            angulo,
+            abertura
+        );
+    }
+
+
+    /*
+       Centro luminoso
+    */
+
+    ctx.shadowBlur = 30;
+
+    ctx.shadowColor =
+        "rgba(255, 220, 50, 1)";
+
+
+    const centro =
+        ctx.createRadialGradient(
+            0,
+            0,
+            1,
+            0,
+            0,
+            24
+        );
+
+
+    centro.addColorStop(
+        0,
+        "#fffbd0"
+    );
+
+    centro.addColorStop(
+        0.25,
+        "#fff36a"
+    );
+
+    centro.addColorStop(
+        0.65,
+        "#ffb51e"
+    );
+
+    centro.addColorStop(
+        1,
+        "#ff6515"
     );
 
 
     ctx.fillStyle =
-        "#ff507d";
-
-
-    ctx.shadowColor =
-        "#ffffff";
-
-    ctx.shadowBlur =
-        10;
+        centro;
 
 
     ctx.beginPath();
 
-    ctx.moveTo(0, 0.3);
-
-    ctx.bezierCurveTo(
-        -0.5,
-        -0.35,
-        -1,
-        0.05,
-        -0.5,
-        0.5
+    ctx.arc(
+        0,
+        0,
+        20,
+        0,
+        Math.PI * 2
     );
 
-    ctx.bezierCurveTo(
-        -0.25,
-        0.75,
-        0,
-        0.95,
-        0,
-        1
+    ctx.fill();
+
+
+    /*
+       Pontinhos de luz no centro
+    */
+
+    ctx.shadowBlur = 10;
+
+    ctx.fillStyle =
+        "#fff8b0";
+
+
+    for (
+        let i = 0;
+        i < 7;
+        i++
+    ) {
+
+        const angulo =
+            i * 0.9 +
+            flor.fase;
+
+
+        const raio =
+            8 +
+            (i % 3) * 4;
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+            Math.cos(angulo) * raio,
+            Math.sin(angulo) * raio,
+            2,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+    }
+
+
+    ctx.restore();
+}
+
+
+/* =========================================================
+   PETALA
+========================================================= */
+
+function desenharPetala(
+    angulo,
+    abertura
+) {
+
+    ctx.save();
+
+
+    ctx.rotate(
+        angulo
     );
 
-    ctx.bezierCurveTo(
+
+    /*
+       A pétala se abre conforme
+       a flor cresce
+    */
+
+    const largura =
+        24 +
+        abertura * 10;
+
+
+    const comprimento =
+        65 +
+        abertura * 18;
+
+
+    /*
+       Gradiente da pétala
+    */
+
+    const gradiente =
+        ctx.createLinearGradient(
+            0,
+            0,
+            0,
+            -comprimento
+        );
+
+
+    gradiente.addColorStop(
         0,
+        "#ff9a22"
+    );
+
+    gradiente.addColorStop(
+        0.35,
+        "#ff681b"
+    );
+
+    gradiente.addColorStop(
+        0.72,
+        "#e83c18"
+    );
+
+    gradiente.addColorStop(
         1,
-        0.25,
-        0.75,
-        0.5,
-        0.5
+        "#8e1d22"
     );
 
-    ctx.bezierCurveTo(
-        1,
-        0.05,
-        0.5,
-        -0.35,
+
+    ctx.fillStyle =
+        gradiente;
+
+
+    ctx.shadowBlur = 18;
+
+    ctx.shadowColor =
+        "rgba(255, 90, 25, 0.75)";
+
+
+    /*
+       Pétala alongada
+    */
+
+    ctx.beginPath();
+
+    ctx.moveTo(
         0,
-        0.3
+        4
     );
+
+
+    ctx.bezierCurveTo(
+
+        -largura,
+        -comprimento * 0.20,
+
+        -largura * 0.9,
+        -comprimento * 0.78,
+
+        0,
+        -comprimento
+
+    );
+
+
+    ctx.bezierCurveTo(
+
+        largura * 0.9,
+        -comprimento * 0.78,
+
+        largura,
+        -comprimento * 0.20,
+
+        0,
+        4
+
+    );
+
+
+    ctx.closePath();
+
+    ctx.fill();
+
+
+    /*
+       Luz no centro da pétala
+    */
+
+    const luz =
+        ctx.createLinearGradient(
+            0,
+            0,
+            0,
+            -comprimento
+        );
+
+
+    luz.addColorStop(
+        0,
+        "rgba(255, 240, 130, 0.40)"
+    );
+
+    luz.addColorStop(
+        0.4,
+        "rgba(255, 190, 60, 0.12)"
+    );
+
+    luz.addColorStop(
+        1,
+        "rgba(255, 100, 20, 0)"
+    );
+
+
+    ctx.fillStyle =
+        luz;
+
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        0,
+        2
+    );
+
+
+    ctx.bezierCurveTo(
+
+        -largura * 0.25,
+        -comprimento * 0.25,
+
+        -largura * 0.18,
+        -comprimento * 0.70,
+
+        0,
+        -comprimento * 0.90
+
+    );
+
+
+    ctx.bezierCurveTo(
+
+        largura * 0.18,
+        -comprimento * 0.70,
+
+        largura * 0.25,
+        -comprimento * 0.25,
+
+        0,
+        2
+
+    );
+
 
     ctx.fill();
 
@@ -640,11 +953,57 @@ function desenharCoracao(
 }
 
 
-/* ========================================= */
-/* FLOR COMPLETA */
-/* ========================================= */
+/* =========================================================
+   CHÃO / SOMBRAS
+========================================================= */
 
-function desenharFlor(tempo) {
+function desenharChao() {
+
+    const gradiente =
+        ctx.createLinearGradient(
+            0,
+            altura - 120,
+            0,
+            altura
+        );
+
+
+    gradiente.addColorStop(
+        0,
+        "rgba(5, 12, 6, 0)"
+    );
+
+    gradiente.addColorStop(
+        1,
+        "rgba(2, 5, 3, 0.95)"
+    );
+
+
+    ctx.fillStyle =
+        gradiente;
+
+
+    ctx.fillRect(
+        0,
+        altura - 150,
+        largura,
+        150
+    );
+}
+
+
+/* =========================================================
+   ANIMAÇÃO
+========================================================= */
+
+function animar() {
+
+    tempo = performance.now();
+
+
+    /*
+       Limpa o canvas
+    */
 
     ctx.clearRect(
         0,
@@ -654,292 +1013,244 @@ function desenharFlor(tempo) {
     );
 
 
-    const centroX =
-        largura / 2;
-
-
-    const centroY =
-        altura * 0.38;
-
-
-    const s =
-        escala;
-
-
     /*
-     * Aura geral.
-     */
+       Fundo muito escuro
+    */
 
-    desenharAura(
-        centroX,
-        centroY,
-        175 * s,
-        0.65
-    );
-
-
-    desenharAura(
-        centroX,
-        centroY,
-        110 * s,
-        0.85
-    );
-
-
-    /*
-     * Partículas.
-     */
-
-    desenharParticulas(
-        centroX,
-        centroY,
-        tempo
-    );
-
-
-    /*
-     * Caule primeiro,
-     * para ficar atrás da flor.
-     */
-
-    desenharCaule(
-        centroX,
-        centroY + 25 * s,
-        145 * s
-    );
-
-
-    /*
-     * Folhas.
-     */
-
-    desenharFolha(
-        centroX - 5 * s,
-        centroY + 115 * s,
-        85 * s,
-        -0.45
-    );
-
-
-    desenharFolha(
-        centroX + 5 * s,
-        centroY + 150 * s,
-        75 * s,
-        Math.PI + 0.4
-    );
-
-
-    /*
-     * Pétalas externas.
-     */
-
-    const quantidadeExterna = 12;
-
-
-    for (
-        let i = 0;
-        i < quantidadeExterna;
-        i++
-    ) {
-
-        const angulo =
-            (
-                Math.PI * 2 /
-                quantidadeExterna
-            ) * i;
-
-
-        desenharPetala(
-            centroX,
-            centroY,
-            105 * s,
-            52 * s,
-            angulo,
-            "#fff176",
-            "#ff7650",
-            25
-        );
-    }
-
-
-    /*
-     * Pétalas intermediárias.
-     */
-
-    const quantidadeMeio = 9;
-
-
-    for (
-        let i = 0;
-        i < quantidadeMeio;
-        i++
-    ) {
-
-        const angulo =
-            (
-                Math.PI * 2 /
-                quantidadeMeio
-            ) * i
-            +
-            Math.PI / 9;
-
-
-        desenharPetala(
-            centroX,
-            centroY,
-            82 * s,
-            43 * s,
-            angulo,
-            "#fff9ad",
-            "#ff9d45",
-            30
-        );
-    }
-
-
-    /*
-     * Pétalas internas.
-     */
-
-    const quantidadeInterna = 7;
-
-
-    for (
-        let i = 0;
-        i < quantidadeInterna;
-        i++
-    ) {
-
-        const angulo =
-            (
-                Math.PI * 2 /
-                quantidadeInterna
-            ) * i;
-
-
-        desenharPetala(
-            centroX,
-            centroY,
-            58 * s,
-            34 * s,
-            angulo,
-            "#ffffff",
-            "#ffd34e",
-            35
-        );
-    }
-
-
-    /*
-     * Luz central.
-     */
-
-    const pulsacao =
-        1 +
-        Math.sin(
-            tempo * 0.002
-        ) * 0.08;
-
-
-    desenharAura(
-        centroX,
-        centroY,
-        65 * s * pulsacao,
-        1
-    );
-
-
-    /*
-     * Núcleo.
-     */
-
-    ctx.save();
-
-    ctx.shadowColor =
-        "#fff5a0";
-
-    ctx.shadowBlur =
-        25;
-
-
-    const centro =
+    const fundo =
         ctx.createRadialGradient(
-            centroX - 8 * s,
-            centroY - 10 * s,
-            2,
-            centroX,
-            centroY,
-            38 * s
+            largura / 2,
+            altura * 0.45,
+            10,
+            largura / 2,
+            altura * 0.45,
+            altura * 0.8
         );
 
 
-    centro.addColorStop(
+    fundo.addColorStop(
         0,
-        "#ffffff"
+        "#140914"
     );
 
-    centro.addColorStop(
-        0.3,
-        "#fff8a0"
+    fundo.addColorStop(
+        0.45,
+        "#07070b"
     );
 
-    centro.addColorStop(
-        0.65,
-        "#ffc928"
-    );
-
-    centro.addColorStop(
+    fundo.addColorStop(
         1,
-        "#e96b18"
+        "#010204"
     );
 
 
-    ctx.fillStyle = centro;
+    ctx.fillStyle =
+        fundo;
 
 
-    ctx.beginPath();
-
-    ctx.arc(
-        centroX,
-        centroY,
-        32 * s,
+    ctx.fillRect(
         0,
-        Math.PI * 2
+        0,
+        largura,
+        altura
     );
-
-    ctx.fill();
-
-
-    ctx.restore();
 
 
     /*
-     * Pequeno coração luminoso.
-     */
+       Pequenos pontos luminosos
+    */
 
-    desenharCoracao(
-        centroX,
-        centroY - 3 * s,
-        15 * s
+    desenharParticulas();
+
+
+    /*
+       Atualiza e desenha as flores
+    */
+
+    flores.forEach(
+        function (flor) {
+
+            const tempoFlor =
+                tempo * 0.00018 -
+                flor.atraso;
+
+
+            /*
+               Crescimento suave
+            */
+
+            const crescimento =
+                Math.min(
+                    1,
+                    Math.max(
+                        0,
+                        tempoFlor
+                    )
+                );
+
+
+            /*
+               Suavização
+            */
+
+            flor.crescimento =
+                crescimento *
+                crescimento *
+                (3 - 2 * crescimento);
+
+
+            desenharCaule(flor);
+
+            desenharFlor(flor);
+        }
+    );
+
+
+    /*
+       Escuridão na base
+    */
+
+    desenharChao();
+
+
+    requestAnimationFrame(
+        animar
     );
 }
 
 
-/* ========================================= */
-/* ANIMAÇÃO */
-/* ========================================= */
+/* =========================================================
+   PARTÍCULAS
+========================================================= */
 
-function animar(tempo) {
+const particulas = [];
 
-    desenharFlor(tempo);
 
-    requestAnimationFrame(animar);
+function criarParticulas() {
+
+    particulas.length = 0;
+
+
+    const quantidade =
+        window.innerWidth < 600
+            ? 20
+            : 32;
+
+
+    for (
+        let i = 0;
+        i < quantidade;
+        i++
+    ) {
+
+        particulas.push({
+
+            x: Math.random(),
+
+            y: Math.random(),
+
+            tamanho: aleatorio(
+                0.5,
+                1.8
+            ),
+
+            velocidade:
+                aleatorio(
+                    0.00001,
+                    0.000035
+                ),
+
+            brilho:
+                aleatorio(
+                    0.2,
+                    0.8
+                ),
+
+            fase:
+                aleatorio(
+                    0,
+                    Math.PI * 2
+                )
+        });
+    }
 }
 
 
-/* ========================================= */
-/* INICIAR */
-/* ========================================= */
+function desenharParticulas() {
+
+    particulas.forEach(
+        function (particula) {
+
+            particula.y -=
+                particula.velocidade *
+                16;
+
+
+            if (particula.y < 0) {
+
+                particula.y = 1;
+
+                particula.x =
+                    Math.random();
+            }
+
+
+            const brilho =
+                particula.brilho *
+                (
+                    0.5 +
+                    Math.sin(
+                        tempo * 0.002 +
+                        particula.fase
+                    ) *
+                    0.5
+                );
+
+
+            ctx.fillStyle =
+                `rgba(255,190,110,${brilho})`;
+
+
+            ctx.shadowBlur = 8;
+
+            ctx.shadowColor =
+                "rgba(255,150,60,0.8)";
+
+
+            ctx.beginPath();
+
+            ctx.arc(
+                particula.x * largura,
+                particula.y * altura,
+                particula.tamanho,
+                0,
+                Math.PI * 2
+            );
+
+            ctx.fill();
+        }
+    );
+
+
+    ctx.shadowBlur = 0;
+}
+
+
+/* =========================================================
+   INICIALIZAÇÃO
+========================================================= */
+
+function iniciar() {
+
+    ajustarCanvas();
+
+    criarParticulas();
+
+    criarJardim();
+
+    animar();
+}
+
 
 window.addEventListener(
     "resize",
@@ -948,12 +1259,10 @@ window.addEventListener(
         ajustarCanvas();
 
         criarParticulas();
+
+        criarJardim();
     }
 );
 
 
-ajustarCanvas();
-
-criarParticulas();
-
-requestAnimationFrame(animar);
+iniciar();
