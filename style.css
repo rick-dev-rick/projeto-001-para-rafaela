@@ -56,8 +56,6 @@ body {
 
     text-align: center;
 
-    /* VIDRO */
-
     background:
         linear-gradient(
             135deg,
@@ -69,13 +67,9 @@ body {
 
     -webkit-backdrop-filter: blur(25px);
 
-    /* BORDA DO VIDRO */
-
     border: 1px solid rgba(255, 255, 255, 0.32);
 
     border-radius: 30px;
-
-    /* SOMBRA E BRILHO */
 
     box-shadow:
         0 25px 60px rgba(0, 0, 0, 0.50),
@@ -93,7 +87,7 @@ body {
 
     color: #ffd1e5;
 
-    font-size: 42px;
+    font-size: 32px;
 
     line-height: 1.25;
 
@@ -113,7 +107,7 @@ body {
 
     color: #fff5fa;
 
-    font-size: 22px;
+    font-size: 18px;
 
     line-height: 1.75;
 
@@ -149,7 +143,7 @@ body {
 
     color: #ffffff;
 
-    font-size: 21px;
+    font-size: 18px;
 
     font-weight: bold;
 
@@ -184,7 +178,7 @@ body {
 
     color: #ffb6d9;
 
-    font-size: 21px;
+    font-size: 18px;
 
     font-weight: bold;
 
@@ -230,7 +224,7 @@ body {
 
     text-decoration: none;
 
-    font-size: 21px;
+    font-size: 18px;
 
     font-weight: bold;
 
@@ -276,8 +270,6 @@ audio {
 
         border-radius: 28px;
 
-        /* VIDRO NO CELULAR */
-
         background:
             linear-gradient(
                 135deg,
@@ -300,7 +292,7 @@ audio {
     /* TÍTULO */
 
     .conteudo h1 {
-        font-size: 36px;
+        font-size: 30px;
 
         line-height: 1.3;
 
@@ -311,7 +303,7 @@ audio {
     /* TEXTOS */
 
     .conteudo p {
-        font-size: 20px;
+        font-size: 17px;
 
         line-height: 1.75;
 
@@ -322,7 +314,7 @@ audio {
     /* BOTÃO PRINCIPAL */
 
     #botaoMensagem {
-        font-size: 20px;
+        font-size: 18px;
 
         padding: 18px 15px;
 
@@ -335,7 +327,7 @@ audio {
     /* MENSAGEM */
 
     #mensagem {
-        font-size: 19px;
+        font-size: 17px;
 
         line-height: 1.7;
     }
@@ -353,6 +345,6 @@ audio {
 
         padding: 17px 26px;
 
-        font-size: 20px;
+        font-size: 18px;
     }
 }
