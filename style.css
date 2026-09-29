@@ -1,24 +1,31 @@
 /* ================================
    CONFIGURAÇÃO GERAL
 ================================ */
+
 * {
     box-sizing: border-box;
 }
+
 html {
     min-height: 100%;
 }
+
 body {
     margin: 0;
     min-height: 100vh;
-    padding: 30px 20px;
+    padding: 40px 20px;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     font-family: Arial, sans-serif;
     text-align: center;
+
     color: white;
+
     overflow-x: hidden;
-    /* Fundo principal */
+
     background:
         radial-gradient(
             circle at 20% 20%,
@@ -36,84 +43,131 @@ body {
             #17091c 45%,
             #050505 100%
         );
+
     position: relative;
 }
+
+
 /* ================================
    LUZES DO FUNDO
 ================================ */
+
 body::before,
 body::after {
     content: "";
+
     position: fixed;
+
     width: 350px;
     height: 350px;
+
     border-radius: 50%;
+
     filter: blur(90px);
+
     opacity: 0.35;
+
     pointer-events: none;
+
     animation: flutuar 8s ease-in-out infinite alternate;
 }
+
 body::before {
     background: #e91e63;
+
     top: -120px;
     left: -100px;
 }
+
 body::after {
     background: #8e44ad;
+
     bottom: -130px;
     right: -100px;
+
     animation-delay: 2s;
 }
+
+
 /* ================================
-   CARD CENTRAL
+   ORGANIZAÇÃO DO CONTEÚDO
 ================================ */
+
 body {
     isolation: isolate;
 }
+
 body > * {
     position: relative;
     z-index: 2;
 }
+
 h1,
 p,
 button {
     max-width: 700px;
 }
+
+
 /* ================================
    TÍTULO
 ================================ */
+
 h1 {
     font-size: clamp(34px, 8vw, 58px);
-    margin: 0 auto 30px;
+
+    margin: 0 auto 35px;
+
     color: #ffffff;
+
     line-height: 1.1;
+
     text-shadow:
         0 0 10px rgba(255, 255, 255, 0.25),
         0 0 25px rgba(233, 30, 99, 0.7),
         0 0 50px rgba(142, 68, 173, 0.5);
+
     animation: aparecer 1.2s ease;
 }
+
+
 /* ================================
    TEXTOS
 ================================ */
+
 p {
-    margin: 12px auto;
+    margin: 16px auto;
+
     color: rgba(255, 255, 255, 0.88);
+
     font-size: clamp(17px, 4vw, 21px);
+
     line-height: 1.7;
+
     text-shadow:
         0 2px 10px rgba(0, 0, 0, 0.5);
+
     animation: aparecer 1.8s ease;
 }
+
+
 /* ================================
    BOTÃO
 ================================ */
+
 button {
     position: relative;
-    margin-top: 30px;
-    padding: 17px 32px;
+
+    display: block;
+
+    margin: 55px auto 0;
+
+    padding: 18px 34px;
+
     border: 1px solid rgba(255, 255, 255, 0.2);
+
     border-radius: 50px;
+
     background:
         linear-gradient(
             135deg,
@@ -121,26 +175,40 @@ button {
             #c2185b,
             #8e44ad
         );
+
     color: white;
+
     font-size: 18px;
+
     font-weight: bold;
+
     letter-spacing: 0.3px;
+
     cursor: pointer;
+
     box-shadow:
         0 10px 30px rgba(233, 30, 99, 0.35),
         0 0 30px rgba(142, 68, 173, 0.25);
+
     transition:
         transform 0.3s ease,
         box-shadow 0.3s ease;
 }
+
+
 /* brilho passando pelo botão */
+
 button::before {
     content: "";
+
     position: absolute;
+
     top: 0;
     left: -100%;
+
     width: 60%;
     height: 100%;
+
     background:
         linear-gradient(
             90deg,
@@ -148,71 +216,108 @@ button::before {
             rgba(255, 255, 255, 0.35),
             transparent
         );
+
     transform: skewX(-20deg);
+
     transition: left 0.6s ease;
 }
+
+
 button:hover::before {
     left: 130%;
 }
+
+
 button:hover {
     transform: translateY(-4px) scale(1.05);
+
     box-shadow:
         0 15px 40px rgba(233, 30, 99, 0.5),
         0 0 45px rgba(142, 68, 173, 0.45);
 }
+
+
 button:active {
     transform: scale(0.96);
 }
+
+
 /* ================================
    MENSAGEM
 ================================ */
+
 #mensagem {
     margin-top: 30px;
+
     color: #ff4f91;
+
     font-size: clamp(21px, 5vw, 28px);
+
     font-weight: bold;
+
     line-height: 1.4;
+
     text-shadow:
         0 0 10px rgba(233, 30, 99, 0.8),
         0 0 25px rgba(233, 30, 99, 0.5);
+
     transition: opacity 0.5s ease;
 }
+
+
 /* ================================
    ANIMAÇÕES
 ================================ */
+
 @keyframes aparecer {
+
     from {
         opacity: 0;
         transform: translateY(25px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
+
+
 @keyframes flutuar {
+
     from {
         transform: translate(0, 0) scale(1);
     }
+
     to {
         transform: translate(40px, 30px) scale(1.15);
     }
 }
+
+
 /* ================================
    CELULAR
 ================================ */
+
 @media (max-width: 600px) {
+
     body {
-        padding: 25px 18px;
+        padding: 30px 18px;
     }
+
     h1 {
-        margin-bottom: 25px;
+        margin-bottom: 28px;
     }
+
     p {
         line-height: 1.6;
+        margin: 14px auto;
     }
+
     button {
         width: 90%;
         max-width: 320px;
+
+        margin-top: 45px;
     }
 }
