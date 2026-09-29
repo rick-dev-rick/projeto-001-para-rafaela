@@ -1,0 +1,460 @@
+/* =========================================
+   PÁGINA 4
+   UMA CARTA PARA RAFAELA ❤️
+   Projeto #001 — Para Rafaela
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(110, 30, 75, 0.35),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(34, 18, 48, 0.85),
+            transparent 55%
+        ),
+        #030507;
+}
+
+
+/* =========================================
+   PÁGINA
+========================================= */
+
+.pagina4 {
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 30px 15px 50px;
+}
+
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+.cabecalho {
+    position: relative;
+    z-index: 5;
+
+    width: calc(100% - 20px);
+    max-width: 720px;
+
+    margin: 0 auto;
+
+    padding: 25px 20px 35px;
+
+    text-align: center;
+}
+
+.cabecalho h1 {
+    margin-bottom: 15px;
+
+    color: #ffd6e8;
+
+    font-size: 32px;
+    line-height: 1.25;
+
+    text-shadow:
+        0 0 8px rgba(255, 105, 180, 0.9),
+        0 0 20px rgba(255, 105, 180, 0.55),
+        0 0 40px rgba(255, 105, 180, 0.25);
+
+    animation: aparecer 1s ease forwards;
+}
+
+.cabecalho p {
+    color: rgba(255, 235, 245, 0.9);
+
+    font-size: 17px;
+    line-height: 1.6;
+
+    text-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.8);
+
+    animation: aparecer 1.3s ease forwards;
+}
+
+
+/* =========================================
+   CARTA
+========================================= */
+
+.carta {
+    position: relative;
+    z-index: 3;
+
+    width: calc(100% - 20px);
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    padding: 45px 40px 50px;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.13),
+            rgba(255, 255, 255, 0.045)
+        );
+
+    border:
+        1px solid rgba(255, 255, 255, 0.22);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.55),
+        0 0 40px rgba(255, 105, 180, 0.12),
+        inset 0 1px 1px rgba(255, 255, 255, 0.22);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    animation: cartaEntrando 1s ease forwards;
+}
+
+
+/* =========================================
+   BRILHO DA CARTA
+========================================= */
+
+.carta::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 70%;
+    height: 1px;
+
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 182, 215, 0.8),
+            transparent
+        );
+
+    box-shadow:
+        0 0 15px rgba(255, 105, 180, 0.6);
+}
+
+
+/* =========================================
+   TEXTO DA CARTA
+========================================= */
+
+.carta > p {
+    margin-bottom: 30px;
+
+    color: rgba(255, 245, 250, 0.96);
+
+    font-size: 18px;
+    line-height: 1.9;
+
+    text-align: left;
+
+    text-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+
+/* =========================================
+   PRIMEIRO PARÁGRAFO
+========================================= */
+
+.carta > p:first-child {
+    color: #fff0f7;
+}
+
+
+/* =========================================
+   ÚLTIMO PARÁGRAFO
+========================================= */
+
+.carta > p:nth-last-of-type(1) {
+    margin-bottom: 40px;
+
+    color: #ffe0ed;
+
+    font-weight: 500;
+}
+
+
+/* =========================================
+   ASSINATURA
+========================================= */
+
+.assinatura {
+    padding-top: 25px;
+
+    text-align: center;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.12);
+}
+
+.assinatura p {
+    margin-bottom: 10px;
+
+    color: #ffb6d7;
+
+    font-size: 17px;
+    line-height: 1.6;
+
+    font-weight: bold;
+
+    text-shadow:
+        0 0 12px rgba(255, 105, 180, 0.65);
+}
+
+.assinatura p:last-child {
+    margin-bottom: 0;
+
+    color: #ffd6e8;
+
+    font-size: 18px;
+}
+
+
+/* =========================================
+   BOTÃO
+========================================= */
+
+.proxima-pagina {
+    position: relative;
+    z-index: 5;
+
+    margin: 42px auto 0;
+
+    text-align: center;
+}
+
+.proxima-pagina a {
+    display: inline-block;
+
+    min-width: 240px;
+
+    padding: 17px 28px;
+
+    border-radius: 50px;
+
+    border:
+        2px solid rgba(255, 255, 255, 0.25);
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff2d75,
+            #e91e63,
+            #ad1457
+        );
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    box-shadow:
+        0 10px 30px rgba(233, 30, 99, 0.45),
+        0 0 25px rgba(255, 105, 180, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.proxima-pagina a:hover {
+    transform: translateY(-3px) scale(1.03);
+
+    box-shadow:
+        0 14px 35px rgba(233, 30, 99, 0.55),
+        0 0 35px rgba(255, 105, 180, 0.35);
+}
+
+.proxima-pagina a:active {
+    transform: scale(0.94);
+
+    box-shadow:
+        0 5px 15px rgba(233, 30, 99, 0.35);
+}
+
+
+/* =========================================
+   RODAPÉ
+========================================= */
+
+footer {
+    width: 100%;
+
+    padding: 0 10px 30px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+footer p {
+    color: rgba(255, 220, 235, 0.55);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   ANIMAÇÕES
+========================================= */
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes cartaEntrando {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================
+   CELULAR
+========================================= */
+
+@media (max-width: 600px) {
+
+    .pagina4 {
+        padding:
+            15px 10px 40px;
+    }
+
+    .cabecalho {
+        width: 100%;
+
+        padding:
+            22px 15px 30px;
+    }
+
+    .cabecalho h1 {
+        font-size: 29px;
+    }
+
+    .cabecalho p {
+        font-size: 16px;
+    }
+
+
+    .carta {
+        width: 100%;
+
+        padding:
+            35px 22px 40px;
+
+        border-radius: 25px;
+    }
+
+
+    .carta > p {
+        font-size: 17px;
+
+        line-height: 1.85;
+
+        margin-bottom: 27px;
+    }
+
+
+    .assinatura {
+        padding-top: 22px;
+    }
+
+
+    .assinatura p {
+        font-size: 16px;
+    }
+
+
+    .assinatura p:last-child {
+        font-size: 17px;
+    }
+
+
+    .proxima-pagina {
+        margin-top: 32px;
+    }
+
+
+    .proxima-pagina a {
+        min-width: 225px;
+
+        padding:
+            16px 24px;
+
+        font-size: 17px;
+    }
+
+
+    footer {
+        padding:
+            0 10px 25px;
+    }
+
+
+    footer p {
+        font-size: 13px;
+    }
+}
