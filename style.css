@@ -93,7 +93,7 @@ body {
 
     color: #ffd1e5;
 
-    font-size: 46px;
+    font-size: 42px;
 
     line-height: 1.25;
 
@@ -113,9 +113,9 @@ body {
 
     color: #fff5fa;
 
-    font-size: 25px;
+    font-size: 22px;
 
-    line-height: 1.85;
+    line-height: 1.75;
 
     text-shadow:
         0 2px 6px rgba(0, 0, 0, 0.45);
@@ -133,7 +133,7 @@ body {
 
     margin: 42px auto 30px;
 
-    padding: 21px 25px;
+    padding: 19px 25px;
 
     border: 1px solid rgba(255, 255, 255, 0.25);
 
@@ -149,7 +149,7 @@ body {
 
     color: #ffffff;
 
-    font-size: 23px;
+    font-size: 21px;
 
     font-weight: bold;
 
@@ -184,7 +184,7 @@ body {
 
     color: #ffb6d9;
 
-    font-size: 22px;
+    font-size: 21px;
 
     font-weight: bold;
 
@@ -211,7 +211,7 @@ body {
 
     min-width: 260px;
 
-    padding: 20px 32px;
+    padding: 18px 32px;
 
     border-radius: 50px;
 
@@ -230,7 +230,7 @@ body {
 
     text-decoration: none;
 
-    font-size: 23px;
+    font-size: 21px;
 
     font-weight: bold;
 
@@ -300,42 +300,42 @@ audio {
     /* TÍTULO */
 
     .conteudo h1 {
-        font-size: 40px;
+        font-size: 36px;
 
         line-height: 1.3;
 
-        margin-bottom: 32px;
+        margin-bottom: 30px;
     }
 
 
     /* TEXTOS */
 
     .conteudo p {
-        font-size: 23px;
+        font-size: 20px;
 
-        line-height: 1.8;
+        line-height: 1.75;
 
-        margin-bottom: 27px;
+        margin-bottom: 25px;
     }
 
 
     /* BOTÃO PRINCIPAL */
 
     #botaoMensagem {
-        font-size: 21px;
+        font-size: 20px;
 
-        padding: 20px 15px;
+        padding: 18px 15px;
 
         border-radius: 16px;
 
-        margin-top: 38px;
+        margin-top: 35px;
     }
 
 
     /* MENSAGEM */
 
     #mensagem {
-        font-size: 20px;
+        font-size: 19px;
 
         line-height: 1.7;
     }
@@ -344,38 +344,15 @@ audio {
     /* CONTINUAR */
 
     .proxima-pagina {
-        margin-top: 45px;
+        margin-top: 42px;
     }
 
 
     .proxima-pagina a {
-        min-width: 245px;
+        min-width: 235px;
 
-        padding: 19px 28px;
+        padding: 17px 26px;
 
-        font-size: 21px;
+        font-size: 20px;
     }
-}
-/* ========================================= */
-/* TESTE DE TAMANHO - PÁGINA 1 🔥 */
-/* ========================================= */
-
-.conteudo h1 {
-    font-size: 60px !important;
-}
-
-.conteudo p {
-    font-size: 30px !important;
-}
-
-#botaoMensagem {
-    font-size: 28px !important;
-}
-
-#mensagem {
-    font-size: 28px !important;
-}
-
-.proxima-pagina a {
-    font-size: 28px !important;
 }
